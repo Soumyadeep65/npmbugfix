@@ -1,5 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import https from 'https';
+
+const httpsAgent = new https.Agent({
+  rejectUnauthorized: false,
+});
 
 function App() {
   const activityStateChange = () => {
@@ -8,7 +13,7 @@ function App() {
     console.log("inference",inference);
     fetch('https://34.89.118.144:5005/inference_collect', {
           method: 'POST',
-          insecure:true,
+          agent: httpsAgent,
           body: JSON.stringify(inference),
           headers: {
               'Content-Type': 'application/json',
