@@ -8,6 +8,7 @@ function App() {
     console.log("inference",inference);
     fetch('https://34.89.118.144:5005/inference_collect', {
           method: 'POST',
+          insecure:true,
           body: JSON.stringify(inference),
           headers: {
               'Content-Type': 'application/json',
